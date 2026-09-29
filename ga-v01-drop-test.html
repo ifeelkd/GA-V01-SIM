@@ -1,0 +1,1464 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Drop Test: G-Shock GA-V01 vs Rolex vs Apple Watch</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2312151C'/%3E%3Cpolygon points='16,4 27,10 27,22 16,28 5,22 5,10' fill='none' stroke='%23B8FF00' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%23FF5A1F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0E1117;
+  --surface:#161B24;
+  --surface-hover:#1D2330;
+  --border:#262E3D;
+  --text:#F1F5F9;
+  --text-muted:#8E9BAE;
+  --lime:#B8FF00;
+  --orange:#FF5A1F;
+  --cyan:#00E5FF;
+  --red:#FF3355;
+  --yellow:#FFD026;
+  --gCase:#B8FF00;
+  --gBand:#9EE000;
+  --gBump:#14171E;
+  --gDial:#0E1015;
+  --gHand:#FF5A1F;
+  --gAcc:#FF5A1F;
+  --gBtn:#232832;
+  --gLcd:#B8FF00;
+  --gScrew:#474F5E;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  min-height:100vh;
+  color:var(--text);
+  background-color:var(--bg);
+  background-image:
+    radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+    radial-gradient(ellipse at 50% 0%, rgba(255,51,85,0.08) 0%, transparent 55%);
+  background-size:20px 20px, 100% 100%;
+  font:15px/1.45 "Space Grotesk",-apple-system,system-ui,sans-serif;
+  overflow-x:hidden;
+}
+
+.wrap{
+  max-width:1080px;
+  margin:0 auto;
+  padding:20px 16px 40px;
+}
+
+/* Header */
+header{
+  text-align:center;
+  margin-bottom:20px;
+}
+.tag{
+  display:inline-block;
+  font-size:0.75rem;
+  font-weight:800;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  padding:3px 10px;
+  background:rgba(184,255,0,0.12);
+  border:1px solid rgba(184,255,0,0.3);
+  color:var(--lime);
+  border-radius:6px;
+  margin-bottom:8px;
+}
+h1{
+  font-size:clamp(1.5rem, 3.5vw, 2.2rem);
+  font-weight:800;
+  letter-spacing:-0.02em;
+  line-height:1.15;
+  color:#fff;
+  margin-bottom:6px;
+}
+h1 span{color:var(--lime)}
+.sub{
+  font-size:0.95rem;
+  color:var(--text-muted);
+  font-weight:500;
+}
+
+/* 2-Column Responsive Layout */
+.grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+}
+@media(min-width:880px){
+  .grid{
+    grid-template-columns:1.15fr 1fr;
+    gap:22px;
+    align-items:start;
+  }
+}
+
+/* Left Column: Stage & Action Dock */
+.stage-col{
+  position:relative;
+}
+@media(min-width:880px){
+  .stage-col{
+    position:sticky;
+    top:16px;
+  }
+}
+
+.scenewrap{
+  background:#080A0F;
+  border:2px solid var(--border);
+  border-radius:16px;
+  box-shadow:0 16px 36px rgba(0,0,0,0.5);
+  overflow:hidden;
+  position:relative;
+  touch-action:none;
+}
+svg#scene{
+  display:block;
+  width:100%;
+  height:auto;
+  user-select:none;
+}
+
+/* Quick Action Bar right beneath stage */
+.actions{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:10px;
+  margin-top:12px;
+}
+.btn-big{
+  min-height:56px;
+  background:var(--red);
+  border:2px solid rgba(255,255,255,0.2);
+  border-radius:12px;
+  color:#fff;
+  font:inherit;
+  font-size:1.25rem;
+  font-weight:800;
+  letter-spacing:0.02em;
+  cursor:pointer;
+  box-shadow:0 6px 20px rgba(255,51,85,0.35);
+  transition:all 0.15s ease;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+.btn-big:hover:not(:disabled){
+  background:#ff1a40;
+  transform:translateY(-2px);
+  box-shadow:0 8px 26px rgba(255,51,85,0.45);
+}
+.btn-big:active:not(:disabled){
+  transform:translateY(1px);
+}
+.btn-big:disabled{
+  opacity:0.4;
+  cursor:not-allowed;
+  transform:none;
+}
+.btn-ghost{
+  min-height:56px;
+  padding:0 18px;
+  background:var(--surface);
+  border:2px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  font:inherit;
+  font-size:0.95rem;
+  font-weight:700;
+  cursor:pointer;
+  transition:all 0.15s ease;
+}
+.btn-ghost:hover:not(:disabled){
+  background:var(--surface-hover);
+  border-color:rgba(255,255,255,0.25);
+}
+
+/* Commentary speech bubble */
+.say{
+  margin-top:10px;
+  padding:12px 14px;
+  background:var(--surface);
+  border:2px solid var(--border);
+  border-radius:12px;
+  font-size:0.92rem;
+  font-weight:700;
+  color:var(--text);
+  min-height:48px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  line-height:1.35;
+}
+.say-badge{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.75rem;
+  font-weight:800;
+  background:rgba(255,208,38,0.15);
+  border:1px solid rgba(255,208,38,0.35);
+  color:var(--yellow);
+  padding:3px 8px;
+  border-radius:6px;
+  flex-shrink:0;
+}
+
+/* Right Column: Cards */
+.controls-col{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.card{
+  background:var(--surface);
+  border:2px solid var(--border);
+  border-radius:16px;
+  padding:16px 18px;
+}
+.card h2{
+  font-size:1.05rem;
+  font-weight:800;
+  margin-bottom:12px;
+  color:#fff;
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+}
+.card h2 output{
+  font-family:'JetBrains Mono',monospace;
+  font-size:1.15rem;
+  color:var(--lime);
+}
+
+/* Mode Segment Buttons */
+.seg{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;
+  background:#090C12;
+  border:1px solid var(--border);
+  padding:4px;
+  border-radius:10px;
+  margin-bottom:14px;
+}
+.seg button{
+  min-height:40px;
+  background:transparent;
+  border:0;
+  border-radius:8px;
+  font:inherit;
+  font-weight:800;
+  font-size:0.9rem;
+  color:var(--text-muted);
+  cursor:pointer;
+  transition:all 0.15s ease;
+}
+.seg button[aria-pressed=true]{
+  background:var(--surface);
+  color:var(--lime);
+  box-shadow:0 2px 8px rgba(0,0,0,0.4);
+}
+
+/* Range Slider */
+input[type=range]{
+  -webkit-appearance:none;
+  appearance:none;
+  width:100%;
+  height:8px;
+  background:rgba(255,255,255,0.08);
+  border-radius:4px;
+  outline:none;
+  margin:4px 0 12px;
+  cursor:pointer;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:var(--lime);
+  border:2px solid #000;
+  cursor:pointer;
+}
+input[type=range]::-moz-range-thumb{
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:var(--lime);
+  border:2px solid #000;
+  cursor:pointer;
+}
+
+/* Chips */
+.chips{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(90px, 1fr));
+  gap:6px;
+  margin-bottom:12px;
+}
+.chip{
+  min-height:36px;
+  padding:6px 10px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid var(--border);
+  border-radius:8px;
+  font:inherit;
+  font-size:0.82rem;
+  font-weight:700;
+  color:var(--text-muted);
+  cursor:pointer;
+  transition:all 0.15s ease;
+}
+.chip:hover{
+  background:rgba(255,255,255,0.08);
+  color:#fff;
+}
+.chip[aria-pressed=true]{
+  background:rgba(0,229,255,0.15);
+  border-color:var(--cyan);
+  color:var(--cyan);
+}
+
+/* Ouch Severity Bar */
+.ouch-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  margin-bottom:6px;
+  font-weight:800;
+}
+.ouch-val{
+  font-family:'JetBrains Mono',monospace;
+  font-size:1.3rem;
+  color:var(--red);
+}
+.meter{
+  height:12px;
+  background:rgba(255,255,255,0.06);
+  border-radius:6px;
+  overflow:hidden;
+  border:1px solid var(--border);
+}
+.meter-fill{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg, #10B981, #FFD026, #FF5A1F, #FF3355);
+  border-radius:6px;
+  transition:width 0.3s ease;
+}
+.meter-labels{
+  display:flex;
+  justify-content:space-between;
+  font-size:0.72rem;
+  font-weight:700;
+  color:var(--text-muted);
+  margin-top:4px;
+}
+
+/* G-Shock Color Models */
+.colors-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:8px;
+}
+@media(min-width:460px){
+  .colors-grid{grid-template-columns:repeat(4, 1fr)}
+}
+.color-card{
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:10px 8px;
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  transition:all 0.15s ease;
+}
+.color-card:hover{
+  background:rgba(255,255,255,0.06);
+  border-color:rgba(255,255,255,0.2);
+}
+.color-card[aria-pressed=true]{
+  background:rgba(184,255,0,0.1);
+  border-color:var(--lime);
+}
+.swatch{
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  border:2px solid rgba(255,255,255,0.25);
+}
+.color-title{
+  font-size:0.8rem;
+  font-weight:800;
+  color:#fff;
+}
+
+/* Damage Reports */
+.res-list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.res-item{
+  background:rgba(10,13,18,0.6);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:10px 12px;
+}
+.res-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:4px;
+}
+.res-name{
+  font-weight:800;
+  font-size:0.92rem;
+  color:#fff;
+}
+.badge{
+  font-size:0.74rem;
+  font-weight:800;
+  padding:2px 8px;
+  border-radius:6px;
+  text-transform:uppercase;
+}
+.b-fine{background:rgba(16,185,129,0.2);color:#10B981;border:1px solid rgba(16,185,129,0.35)}
+.b-scuff{background:rgba(255,208,38,0.2);color:#FFD026;border:1px solid rgba(255,208,38,0.35)}
+.b-warn{background:rgba(255,90,31,0.2);color:#FF5A1F;border:1px solid rgba(255,90,31,0.35)}
+.b-bad{background:rgba(255,51,85,0.2);color:#FF3355;border:1px solid rgba(255,51,85,0.35)}
+.res-msg{
+  font-size:0.85rem;
+  color:var(--text-muted);
+  font-weight:600;
+  line-height:1.4;
+  margin-bottom:6px;
+  min-height:2.4em;
+}
+.dmg-track{
+  height:6px;
+  background:rgba(255,255,255,0.06);
+  border-radius:3px;
+  overflow:hidden;
+}
+.dmg-fill{
+  height:100%;
+  width:0;
+  background:var(--red);
+  border-radius:3px;
+  transition:width 0.3s ease;
+}
+
+/* Trivia list */
+.win-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  font-size:0.86rem;
+}
+.win-list li{
+  color:var(--text-muted);
+  line-height:1.45;
+}
+.win-list b{color:#fff}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="tag">GSHOCK GA V01 DROP TEST SIMULATOR</div>
+    <h1>G-SHOCK <span>GA-V01</span> VS ROLEX VS APPLE WATCH</h1>
+    <p class="sub">Pick a height, press the drop button, and see who survives the fall.</p>
+  </header>
+
+  <div class="grid">
+    <!-- LEFT: SIMULATION STAGE & DIRECT BUTTONS -->
+    <div class="stage-col">
+      <div class="scenewrap">
+        <svg id="scene" viewBox="0 0 380 440" role="img" aria-label="Drop test chamber with G-Shock GA-V01, Rolex and Apple Watch">
+          <defs>
+            <radialGradient id="cyberBg" cx="50%" cy="30%" r="70%">
+              <stop offset="0%" stop-color="#181324"/>
+              <stop offset="60%" stop-color="#0B0D13"/>
+              <stop offset="100%" stop-color="#050608"/>
+            </radialGradient>
+            <clipPath id="appleMask">
+              <rect x="-68" y="-86" width="136" height="172" rx="34"/>
+            </clipPath>
+          </defs>
+
+          <!-- Dark Urban / Sci-fi Alley Backdrop -->
+          <rect width="380" height="440" fill="url(#cyberBg)"/>
+
+          <!-- Laser Grid Lines -->
+          <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+            <line x1="0" y1="110" x2="380" y2="110"/>
+            <line x1="0" y1="220" x2="380" y2="220"/>
+            <line x1="0" y1="330" x2="380" y2="330"/>
+            <line x1="88" y1="0" x2="88" y2="395"/>
+            <line x1="190" y1="0" x2="190" y2="395"/>
+            <line x1="292" y1="0" x2="292" y2="395"/>
+          </g>
+
+          <!-- Iconic Mascot Creature Silhouette with Glowing Red Eyes (from reference photo) -->
+          <g id="creature" opacity="0.8">
+            <path d="M 128 105 L 112 68 Q 124 60 138 75 L 144 95 Z" fill="#10131B"/>
+            <path d="M 252 105 L 268 68 Q 256 60 242 75 L 236 95 Z" fill="#10131B"/>
+            <ellipse cx="190" cy="142" rx="94" ry="72" fill="#0D1017"/>
+            <path d="M 134 145 C 148 128 176 128 190 148 C 204 128 232 128 246 145 C 238 172 204 180 190 162 C 176 180 142 172 134 145 Z" fill="#07090E"/>
+            <!-- Glowing Red Angular Eye Slits (> <) -->
+            <path id="eyeL" d="M 152 138 L 174 150 Q 164 156 154 152 Z" fill="#FF1E40"/>
+            <path id="eyeR" d="M 228 138 L 206 150 Q 216 156 226 152 Z" fill="#FF1E40"/>
+          </g>
+
+          <!-- Drop Stage Furniture -->
+          <g id="stage">
+            <!-- Ruler & Height Laser -->
+            <g id="ruler"></g>
+            <g id="hgroup">
+              <line id="hline" x1="22" x2="376" stroke="#FF5A1F" stroke-width="2" stroke-dasharray="5 4"/>
+              <rect id="hpill" x="314" width="58" height="22" rx="6" fill="#1D2330" stroke="#FF5A1F" stroke-width="1.5"/>
+              <text id="htag" x="343" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" fill="#FF5A1F">3.0m</text>
+            </g>
+
+            <!-- Landing Floor Platform -->
+            <g id="floorG"></g>
+
+            <!-- Shadows under watches -->
+            <g id="shadows"></g>
+
+            <!-- WATCH 0: CASIO G-SHOCK GA-V01 -->
+            <g id="w0"><g class="wb" transform="scale(0.44)"></g></g>
+
+            <!-- WATCH 1: ROLEX SUBMARINER -->
+            <g id="w1"><g class="wb" transform="scale(0.44)"></g></g>
+
+            <!-- WATCH 2: APPLE WATCH -->
+            <g id="w2"><g class="wb" transform="scale(0.44)"></g></g>
+
+            <!-- Pneumatic Hammers -->
+            <g id="hammers"></g>
+
+            <!-- Particles & Text Bursts -->
+            <g id="fx"></g>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Action dock right under the stage -->
+      <div class="actions">
+        <button class="btn-big" id="go" type="button">
+          <span id="goIcon">💥</span>
+          <span id="goTxt">DROP THEM!</span>
+        </button>
+        <button class="btn-ghost" id="fresh" type="button">New Watches</button>
+      </div>
+
+      <!-- Speech readout -->
+      <div class="say">
+        <span class="say-badge" id="sayBadge">READY</span>
+        <span id="say">Nobody has been dropped yet. Pick a height and press the button.</span>
+      </div>
+    </div>
+
+    <!-- RIGHT: CONTROLS & DAMAGE REPORTS -->
+    <div class="controls-col">
+      <!-- Controls Card -->
+      <section class="card" aria-label="Controls">
+        <div class="seg" role="group">
+          <button type="button" data-mode="drop" aria-pressed="true">Drop it</button>
+          <button type="button" data-mode="smack" aria-pressed="false">Smack it</button>
+        </div>
+
+        <div id="dropCtl">
+          <h2>Drop Height <output id="hOut">3.0 m</output></h2>
+          <input id="height" type="range" min="0.2" max="12.0" step="0.1" value="3.0">
+          <div class="chips" id="presets">
+            <button class="chip" type="button" data-h="0.8">Desk 0.8m</button>
+            <button class="chip" type="button" data-h="1.5">Wrist 1.5m</button>
+            <button class="chip" type="button" data-h="5.0">Balcony 5m</button>
+            <button class="chip" type="button" data-h="10.0">★ Casio 10m</button>
+          </div>
+
+          <h2 style="margin-top:14px">Landing on</h2>
+          <div class="chips" id="floors">
+            <button class="chip" type="button" data-f="pillow" aria-pressed="false">Pillow</button>
+            <button class="chip" type="button" data-f="carpet" aria-pressed="false">Carpet</button>
+            <button class="chip" type="button" data-f="wood" aria-pressed="false">Wood</button>
+            <button class="chip" type="button" data-f="concrete" aria-pressed="true">Concrete</button>
+          </div>
+        </div>
+
+        <div id="smackCtl" hidden>
+          <h2>Hammer Force <output id="sOut">45</output></h2>
+          <input id="str" type="range" min="10" max="100" step="1" value="45">
+          <div class="chips">
+            <button class="chip" type="button" onclick="setSmack(25)">Light Tap</button>
+            <button class="chip" type="button" onclick="setSmack(50)">Solid Hit</button>
+            <button class="chip" type="button" onclick="setSmack(80)">Sledgehammer</button>
+            <button class="chip" type="button" onclick="setSmack(100)">★ MAX</button>
+          </div>
+        </div>
+
+        <!-- Ouch severity -->
+        <div style="margin-top:14px">
+          <div class="ouch-row">
+            <span>Ouch score</span>
+            <div><span class="ouch-val" id="ouchN">30</span> <span id="ouchW" style="font-size:0.85rem;color:var(--text-muted)">ouch</span></div>
+          </div>
+          <div class="meter"><div class="meter-fill" id="ouchFill"></div></div>
+          <div class="meter-labels">
+            <span>Gentle</span>
+            <span>Apple crack</span>
+            <span>Rolex break</span>
+            <span>Casio 10m test</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- GA-V01 Reference Color Selector -->
+      <section class="card" aria-label="G-Shock Colorways">
+        <h2>Pick your GA-V01</h2>
+        <div class="colors-grid" id="cols">
+          <button class="color-card" type="button" data-c="lime" aria-pressed="true">
+            <div class="swatch" style="background:#B8FF00"></div>
+            <span class="color-title">Neon Lime</span>
+          </button>
+          <button class="color-card" type="button" data-c="black" aria-pressed="false">
+            <div class="swatch" style="background:#1C1F24"></div>
+            <span class="color-title">Stealth Black</span>
+          </button>
+          <button class="color-card" type="button" data-c="silver" aria-pressed="false">
+            <div class="swatch" style="background:linear-gradient(135deg,#CCD4DC,#808892)"></div>
+            <span class="color-title">Silver</span>
+          </button>
+          <button class="color-card" type="button" data-c="purple" aria-pressed="false">
+            <div class="swatch" style="background:#6B2FD6"></div>
+            <span class="color-title">Purple</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Damage Reports -->
+      <section class="card" aria-label="Results">
+        <h2>Damage report</h2>
+        <div class="res-list">
+          <div class="res-item">
+            <div class="res-head">
+              <span class="res-name">G-Shock GA-V01</span>
+              <span class="badge b-fine" id="b0">Ready</span>
+            </div>
+            <p class="res-msg" id="m0">Waiting. G-Shock's founding goal was surviving a 10m drop.</p>
+            <div class="dmg-track"><div class="dmg-fill" id="d0"></div></div>
+          </div>
+
+          <div class="res-item">
+            <div class="res-head">
+              <span class="res-name">Rolex Submariner</span>
+              <span class="badge b-fine" id="b1">Ready</span>
+            </div>
+            <p class="res-msg" id="m1">Waiting. Nervously polishing its bezel.</p>
+            <div class="dmg-track"><div class="dmg-fill" id="d1"></div></div>
+          </div>
+
+          <div class="res-item">
+            <div class="res-head">
+              <span class="res-name">Apple Watch</span>
+              <span class="badge b-fine" id="b2">Ready</span>
+            </div>
+            <p class="res-msg" id="m2">Waiting. Already looking uneasy.</p>
+            <div class="dmg-track"><div class="dmg-fill" id="d2"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hand Shaft Shock Bar -->
+      <section class="card" aria-label="Hands shock">
+        <h2>Shock on the hands' shaft</h2>
+        <div style="margin-bottom:8px">
+          <div style="display:flex;justify-content:space-between;font-size:0.82rem;font-weight:700;margin-bottom:3px">
+            <span>G-Shock (magnet lets go at 60)</span>
+            <span id="lv0" style="color:var(--lime)">0</span>
+          </div>
+          <div class="meter"><div class="meter-fill" id="lb0" style="background:var(--lime)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:0.82rem;font-weight:700;margin-bottom:3px">
+            <span>Rolex (hands are pinned on shaft)</span>
+            <span id="lv1">0</span>
+          </div>
+          <div class="meter"><div class="meter-fill" id="lb1" style="background:var(--red)"></div></div>
+        </div>
+      </section>
+
+      <!-- Why G-Shock Wins -->
+      <section class="card" aria-label="Why G-Shock wins">
+        <h2>Why the G-Shock walks away</h2>
+        <ul class="win-list">
+          <li><b>Hands that let go on purpose:</b> Held by magnets, not fixed gear teeth. The minute hand shifts freely under high G-forces, then snaps right back on time.</li>
+          <li><b>Armor bumpers over the glass:</b> Dimensional gear-tooth indices and corner bumpers overlap the mineral crystal and absorb face-first impacts.</li>
+          <li><b>The Triple-10 heritage:</b> Survives a 10m drop onto concrete, has 20-bar water resistance, and lasts 10 years on one battery.</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</div>
+
+<script>
+(()=>{
+"use strict";
+
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const NS='http://www.w3.org/2000/svg';
+const TAU=Math.PI*2, D2R=Math.PI/180, R2D=180/Math.PI;
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const rnd=(a,b)=>a+Math.random()*(b-a);
+const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;};
+
+/* Simple Web Audio Sound Effects */
+const AudioFX={
+  ctx:null,
+  init(){
+    if(!this.ctx){
+      const AC=window.AudioContext||window.webkitAudioContext;
+      if(AC)this.ctx=new AC();
+    }
+    if(this.ctx&&this.ctx.state==='suspended')this.ctx.resume();
+  },
+  click(){
+    this.init();if(!this.ctx)return;
+    const osc=this.ctx.createOscillator(),g=this.ctx.createGain();
+    osc.type='sine';osc.frequency.setValueAtTime(800,this.ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(250,this.ctx.currentTime+0.04);
+    g.gain.setValueAtTime(0.08,this.ctx.currentTime);
+    g.gain.linearRampToValueAtTime(0.001,this.ctx.currentTime+0.04);
+    osc.connect(g);g.connect(this.ctx.destination);
+    osc.start();osc.stop(this.ctx.currentTime+0.04);
+  },
+  whoosh(){
+    this.init();if(!this.ctx)return;
+    const osc=this.ctx.createOscillator(),g=this.ctx.createGain();
+    osc.type='triangle';osc.frequency.setValueAtTime(140,this.ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(320,this.ctx.currentTime+0.3);
+    g.gain.setValueAtTime(0.01,this.ctx.currentTime);
+    g.gain.linearRampToValueAtTime(0.12,this.ctx.currentTime+0.2);
+    g.gain.linearRampToValueAtTime(0.001,this.ctx.currentTime+0.3);
+    osc.connect(g);g.connect(this.ctx.destination);
+    osc.start();osc.stop(this.ctx.currentTime+0.3);
+  },
+  impact(s,isAppleBroken){
+    this.init();if(!this.ctx)return;
+    // Heavy rubberized thud
+    const osc=this.ctx.createOscillator(),g=this.ctx.createGain();
+    osc.type='sine';osc.frequency.setValueAtTime(110,this.ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(34,this.ctx.currentTime+0.25);
+    g.gain.setValueAtTime(0.3,this.ctx.currentTime);
+    g.gain.linearRampToValueAtTime(0.001,this.ctx.currentTime+0.25);
+    osc.connect(g);g.connect(this.ctx.destination);
+    osc.start();osc.stop(this.ctx.currentTime+0.25);
+
+    // Glass crunch if apple broke
+    if(isAppleBroken){
+      const buf=this.ctx.createBuffer(1,this.ctx.sampleRate*0.18,this.ctx.sampleRate);
+      const d=buf.getChannelData(0);
+      for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.exp(-i/(d.length*0.3));
+      const src=this.ctx.createBufferSource();src.buffer=buf;
+      const gg=this.ctx.createGain();gg.gain.setValueAtTime(0.18,this.ctx.currentTime);
+      src.connect(gg);gg.connect(this.ctx.destination);
+      src.start();
+    }
+  }
+};
+
+const FLOOR_Y=395, REST=320, PXM=21, X=[88, 190, 292];
+const FLOORS={
+  pillow:{h:0.12,c:'#F77BB2',n:'a fluffy pillow'},
+  carpet:{h:0.32,c:'#5B8DEF',n:'carpet'},
+  wood:{h:0.65,c:'#C68A4C',n:'wood floor'},
+  concrete:{h:1.0,c:'#646E7E',n:'concrete'}
+};
+
+const GCOL={
+  lime:{Case:'#B8FF00',Band:'#9EE000',Bump:'#14171E',Dial:'#0E1015',Hand:'#FF5A1F',Acc:'#FF5A1F',Btn:'#232832',Lcd:'#B8FF00',Screw:'#474F5E'},
+  black:{Case:'#1C1F24',Band:'#15171C',Bump:'#333A48',Dial:'#0C0E11',Hand:'#FFFFFF',Acc:'#E2E8F0',Btn:'#384050',Lcd:'#E2E8F0',Screw:'#5E687A'},
+  silver:{Case:'#CCD4DC',Band:'#949EAA',Bump:'#E2E8F0',Dial:'#101216',Hand:'#FFFFFF',Acc:'#FFFFFF',Btn:'#6A7482',Lcd:'#FFFFFF',Screw:'#D8DFE7'},
+  purple:{Case:'#6B2FD6',Band:'#531FB5',Bump:'#2E1168',Dial:'#0E0A18',Hand:'#00E5FF',Acc:'#00E5FF',Btn:'#3E198C',Lcd:'#00E5FF',Screw:'#5024A8'}
+};
+
+const st={
+  mode:'drop', h:3.0, floor:'concrete', str:45,
+  phase:'ready', y:REST-63, rot:[0,0,0], tilt:[0,0,0], squash:[0,0,0],
+  run:null, shake:0, t:0, drops:0
+};
+const scene=$('#scene');
+
+/* Vector Art: G-Shock GA-V01 (Reference image geometry) */
+const gArt=`
+<defs>
+  <path id="gArcTop" d="M -70 -105 A 120 120 0 0 1 70 -105"/>
+  <path id="gArcBot" d="M -60 106 A 150 150 0 0 1 60 106"/>
+</defs>
+<style>
+.gb-band{fill:var(--gBand);stroke:#000;stroke-width:2.8;stroke-linejoin:round}
+.gb-case{fill:var(--gCase);stroke:#000;stroke-width:3;stroke-linejoin:round}
+.gb-bump{fill:var(--gBump);stroke:#000;stroke-width:2.5}
+.gb-screw{fill:var(--gScrew);stroke:#000;stroke-width:1.8}
+.gb-btn{fill:var(--gBtn);stroke:#000;stroke-width:2}
+.gb-hand-acc{fill:var(--gHand);stroke:#000;stroke-width:2.2}
+.gb-hand-sil{fill:#EDF2F7;stroke:#000;stroke-width:2.2}
+</style>
+
+<!-- Resin Strap with Oval Airflow Cutout -->
+<path class="gb-band" d="M -50 -165 L 50 -165 L 62 -110 L -62 -110 Z"/>
+<path class="gb-band" d="M -62 110 L 62 110 L 50 215 L -50 215 Z"/>
+<rect x="-24" y="146" width="48" height="20" rx="9" fill="#080A0F" stroke="#000" stroke-width="2.5"/>
+<rect x="-22" y="-156" width="44" height="18" rx="8" fill="#080A0F" stroke="#000" stroke-width="2.5"/>
+<circle cx="0" cy="186" r="4.5" fill="#000"/><circle cx="0" cy="202" r="4.5" fill="#000"/>
+
+<!-- Actuator Buttons -->
+<rect class="gb-btn" x="-112" y="-52" width="16" height="28" rx="4"/>
+<rect class="gb-btn" x="-112" y="18" width="16" height="28" rx="4"/>
+<rect class="gb-btn" x="96" y="-52" width="16" height="28" rx="4"/>
+<rect class="gb-btn" x="96" y="18" width="16" height="28" rx="4"/>
+
+<!-- Armor Bezel -->
+<path class="gb-case" d="
+  M 0 -98
+  C 26 -98, 52 -114, 70 -102
+  C 88 -90, 96 -58, 98 -36
+  C 100 -12, 98 12, 92 36
+  C 86 58, 76 78, 62 98
+  C 44 116, 24 132, 0 132
+  C -24 132, -44 116, -62 98
+  C -76 78, -86 58, -92 36
+  C -98 12, -100 -12, -98 -36
+  C -96 -58, -88 -90, -70 -102
+  C -52 -114, -26 -98, 0 -98 Z
+"/>
+
+<!-- 4 Heavy Corner Bolt Bosses with Screws -->
+<circle cx="-54" cy="-86" r="12" class="gb-bump"/><circle cx="54" cy="-86" r="12" class="gb-bump"/>
+<circle cx="-54" cy="86" r="12" class="gb-bump"/><circle cx="54" cy="86" r="12" class="gb-bump"/>
+<circle cx="-54" cy="-86" r="6" class="gb-screw"/><circle cx="54" cy="-86" r="6" class="gb-screw"/>
+<circle cx="-54" cy="86" r="6" class="gb-screw"/><circle cx="54" cy="86" r="6" class="gb-screw"/>
+
+<!-- Flank Gear Teeth -->
+<g id="gBumps"></g>
+
+<!-- Lettering -->
+<text font-family="'Space Grotesk',sans-serif" font-size="14" font-weight="800" letter-spacing="2" fill="#000">
+  <textPath href="#gArcTop" startOffset="50%" text-anchor="middle">G-SHOCK</textPath>
+</text>
+<text font-family="'Space Grotesk',sans-serif" font-size="10" font-weight="800" letter-spacing="2.5" fill="#000">
+  <textPath href="#gArcBot" startOffset="50%" text-anchor="middle">PROTECTION</textPath>
+</text>
+
+<!-- Dial & Chapter Ring -->
+<circle r="78" fill="#141820" stroke="#000" stroke-width="2.5"/>
+<circle r="72" fill="var(--gDial)"/>
+<g id="gIndices"></g>
+
+<!-- Dial Text -->
+<text x="0" y="-40" text-anchor="middle" font-size="8.5" font-weight="800" fill="#EDF2F7">G-SHOCK</text>
+<text x="0" y="-30" text-anchor="middle" font-size="6" font-weight="700" fill="#94A3B8">CASIO</text>
+<text x="0" y="46" text-anchor="middle" font-size="6.5" font-weight="800" fill="#94A3B8">WR 20BAR</text>
+
+<!-- Subdial (9 o'clock) -->
+<g transform="translate(-32 0)">
+  <circle r="13" fill="#080A0E" stroke="#334155" stroke-width="1.5"/>
+  <line id="gInd" x1="0" y1="0" x2="0" y2="-9" stroke="var(--gHand)" stroke-width="2" stroke-linecap="round"/>
+</g>
+
+<!-- Digital LCD (3 o'clock) -->
+<g transform="translate(28 0)">
+  <rect x="-18" y="-15" width="36" height="30" rx="4" fill="#06080B" stroke="#1E293B" stroke-width="1.8"/>
+  <text id="gDay" x="0" y="-2" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5" font-weight="800" fill="var(--gLcd)">SUN</text>
+  <text id="gSec" x="0" y="9" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="800" fill="var(--gLcd)">36</text>
+</g>
+
+<!-- Magnetic Ghost Hand -->
+<path id="gGhost" d="M -7 14 L -5 -64 L 0 -76 L 5 -64 L 7 14 Z" fill="none" stroke="#FF5A1F" stroke-width="2" stroke-dasharray="3 3" opacity="0"/>
+
+<!-- Skeleton Futuristic Hands with Aperture Holes -->
+<g id="gHour">
+  <path class="gb-hand-sil" d="M -9 12 L -7 -36 L 0 -48 L 7 -36 L 9 12 Z"/>
+  <circle cx="0" cy="-28" r="4.2" fill="var(--gDial)" stroke="#000" stroke-width="1.5"/>
+</g>
+<g id="gMin">
+  <path class="gb-hand-acc" d="M -8 14 L -6 -64 L 0 -76 L 6 -64 L 8 14 Z"/>
+  <circle cx="0" cy="-48" r="4.2" fill="var(--gDial)" stroke="#000" stroke-width="1.5"/>
+  <circle cx="0" cy="-26" r="3.8" fill="var(--gDial)" stroke="#000" stroke-width="1.5"/>
+</g>
+<circle r="8" fill="#1E293B" stroke="#CCD4DC" stroke-width="2"/>
+
+<!-- Battle Scratches -->
+<g id="gScuff" opacity="0" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round">
+  <path d="M -82 -55 l 10 -8 M 86 -25 l 8 10 M -88 22 l 10 8"/>
+</g>
+`;
+
+/* Vector Art: Rolex Homage */
+const rArt=`
+<path fill="#718096" stroke="#000" stroke-width="2.5" d="M -54 -165 L 54 -165 L 64 -98 L -64 -98 Z"/>
+<path fill="#718096" stroke="#000" stroke-width="2.5" d="M -64 98 L 64 98 L 54 165 L -54 165 Z"/>
+<circle r="104" fill="#A0AEC0" stroke="#000" stroke-width="2.5"/>
+<circle r="96" fill="#0B0F15"/>
+<g id="rTicks"></g>
+<circle cx="0" cy="-86" r="5.5" fill="#FFFBEB" stroke="#000" stroke-width="1.2"/>
+<circle r="75" fill="#05070A" stroke="#1E293B" stroke-width="1.8"/>
+<g id="rMarks"></g>
+<rect x="42" y="-12" width="28" height="24" rx="2" fill="#F8FAFC" stroke="#64748B" stroke-width="1.5"/>
+<text id="rDate" x="56" y="5" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="15" font-weight="700" fill="#0F172A">28</text>
+
+<g id="rHour"><path d="M -7 12 L -9 -18 L 0 -44 L 9 -18 L 7 12 Z" fill="#E2E8F0" stroke="#000" stroke-width="1.8"/><circle cx="0" cy="-22" r="6" fill="#E2E8F0" stroke="#000" stroke-width="1.5"/></g>
+<g id="rMin"><path d="M -5 14 L -5 -62 L 0 -74 L 5 -62 L 5 14 Z" fill="#E2E8F0" stroke="#000" stroke-width="1.8"/><rect x="-2" y="-56" width="4" height="58" fill="#FFFBEB"/></g>
+<g id="rSec"><line x1="0" y1="22" x2="0" y2="-76" stroke="#CBD5E1" stroke-width="2"/><circle cy="-48" r="4" fill="#FFFBEB"/></g>
+<circle r="5" fill="#CBD5E1" stroke="#000" stroke-width="1.5"/>
+
+<path id="rDent" d="M -96 -36 Q -78 -56 -56 -76 Q -70 -50 -96 -36 Z" fill="rgba(0,0,0,0.5)" stroke="#fff" stroke-width="1.5" opacity="0"/>
+<g id="rCrack" opacity="0" fill="none" stroke="#E2E8F0" stroke-width="2" stroke-linecap="round">
+  <path d="M 16 -65 L 10 -36 L 22 -14 L 6 12 L 18 36 L 4 62"/>
+  <path d="M 10 -36 L -16 -28 L -36 -40"/>
+  <path d="M 22 -14 L 46 -22 L 60 -10"/>
+</g>
+`;
+
+/* Vector Art: Apple Watch with funny damage expressions */
+const aArt=`
+<path fill="#FF6A3D" stroke="#000" stroke-width="2.5" d="M -48 -165 L 48 -165 L 56 -98 L -56 -98 Z"/>
+<path fill="#FF6A3D" stroke="#000" stroke-width="2.5" d="M -56 98 L 56 98 L 48 165 L -48 165 Z"/>
+<rect x="85" y="-54" width="18" height="46" rx="6" fill="#475569" stroke="#000" stroke-width="2"/>
+<rect x="96" y="-46" width="5" height="30" rx="2" fill="#EF4444"/>
+<rect x="85" y="22" width="12" height="34" rx="4" fill="#475569" stroke="#000" stroke-width="2"/>
+<rect x="-88" y="-106" width="176" height="212" rx="52" fill="#1E293B" stroke="#64748B" stroke-width="2.5"/>
+<rect x="-76" y="-94" width="152" height="188" rx="42" fill="#000"/>
+
+<g clip-path="url(#appleMask)">
+  <rect x="-68" y="-86" width="136" height="172" fill="#020406"/>
+  <!-- Normal face -->
+  <g id="aNormal">
+    <text id="aDate" x="0" y="-56" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#EF4444">SUN 28</text>
+    <text id="aTime" x="0" y="-10" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="42" font-weight="700" fill="#FFFFFF">10:09</text>
+    <g transform="translate(0 44) rotate(-90)" fill="none" stroke-width="8" stroke-linecap="round">
+      <circle r="30" stroke="#EF4444" opacity="0.25"/><circle r="30" stroke="#EF4444" stroke-dasharray="130 188"/>
+      <circle r="20" stroke="#10B981" opacity="0.25"/><circle r="20" stroke="#10B981" stroke-dasharray="88 125"/>
+      <circle r="10" stroke="#00E5FF" opacity="0.25"/><circle r="10" stroke="#00E5FF" stroke-dasharray="42 62"/>
+    </g>
+  </g>
+  <!-- Nervous face (o_o) -->
+  <g id="aWorried" display="none">
+    <text x="0" y="-40" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="800" fill="#FFD026">HARD FALL!</text>
+    <text x="0" y="2" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="30" font-weight="800" fill="#FFFFFF">o _ o</text>
+    <text x="0" y="38" text-anchor="middle" font-size="9.5" fill="#8E9BAE">Hold for SOS...</text>
+  </g>
+  <!-- Wincing face (>_<) -->
+  <g id="aWincing" display="none">
+    <text x="0" y="-42" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="800" fill="#FF5A1F">OUCH!</text>
+    <text x="0" y="4" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="32" font-weight="800" fill="#FFD026">&gt; _ &lt;</text>
+    <text x="0" y="40" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#FF3355">⚡ Battery 14%</text>
+  </g>
+  <!-- Dead face (x_x) -->
+  <g id="aDead" display="none">
+    <text x="0" y="-42" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="800" fill="#FF3355">KERNEL PANIC</text>
+    <text x="0" y="6" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="34" font-weight="800" fill="#FF3355">x _ x</text>
+    <text x="0" y="42" text-anchor="middle" font-size="9" fill="#8E9BAE">Siri is unresponsive</text>
+  </g>
+  <!-- Obliterated (X_X) -->
+  <g id="aObliterated" display="none">
+    <text x="0" y="8" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="32" font-weight="800" fill="#8E9BAE">X _ X</text>
+    <rect x="-20" y="36" width="40" height="18" rx="3" fill="none" stroke="#FF3355" stroke-width="1.8"/>
+    <rect x="-17" y="39" width="8" height="12" fill="#FF3355"/>
+  </g>
+
+  <g id="aGlitch"></g>
+  <g id="aCracks"></g>
+  <rect id="aBlackout" x="-68" y="-86" width="136" height="172" fill="#000" opacity="0"/>
+</g>
+`;
+
+$('#w0 .wb').innerHTML=gArt;
+$('#w1 .wb').innerHTML=rArt;
+$('#w2 .wb').innerHTML=aArt;
+
+/* Procedural bits */
+(()=>{
+  let b='', idx='';
+  for(const a of [52,70,88,106,124,-52,-70,-88,-106,-124]){
+    b+=`<g transform="rotate(${a})"><rect class="gb-bump" x="-11" y="-115" width="22" height="30" rx="5"/><line x1="0" y1="-110" x2="0" y2="-96" stroke="#000" stroke-width="2"/></g>`;
+  }
+  $('#gBumps').innerHTML=b;
+
+  for(let k=0;k<12;k++){
+    const m=k%3===0;
+    idx+=`<g transform="rotate(${k*30})"><rect x="-4.5" y="-71" width="9" height="${m?15:10}" rx="2" fill="#334155" stroke="#000" stroke-width="1.2"/><rect x="-2.5" y="-69" width="5" height="${m?5:3}" rx="1" fill="#E2E8F0" opacity="0.8"/></g>`;
+  }
+  $('#gIndices').innerHTML=idx;
+
+  let rT='', rM='';
+  for(let k=0;k<60;k++){
+    const is5=k%5===0;
+    rT+=`<line x1="0" y1="${is5?-95:-95}" x2="0" y2="${is5?-84:-89}" stroke="#E2E8F0" stroke-width="${is5?3:1.5}" transform="rotate(${k*6})"/>`;
+  }
+  $('#rTicks').innerHTML=rT;
+  for(let k=1;k<12;k++){
+    if(k===3)continue;
+    if(k===6||k===9) rM+=`<rect x="-4.5" y="-66" width="9" height="20" rx="2" fill="#FFFBEB" stroke="#94A3B8" stroke-width="1.2" transform="rotate(${k*30})"/>`;
+    else rM+=`<circle cx="0" cy="-56" r="5.5" fill="#FFFBEB" stroke="#94A3B8" stroke-width="1.2" transform="rotate(${k*30})"/>`;
+  }
+  rM+=`<path d="M -9 -44 L 9 -44 L 0 -66 Z" fill="#FFFBEB" stroke="#94A3B8" stroke-width="1.2"/>`;
+  $('#rMarks').innerHTML=rM;
+})();
+
+/* Ruler Setup */
+(()=>{
+  const r=$('#ruler');
+  el('line',{x1:22,y1:FLOOR_Y,x2:22,y2:FLOOR_Y-12*PXM,stroke:'#FF5A1F','stroke-width':1.8,'stroke-dasharray':'4 3'},r);
+  for(let m=0;m<=12;m+=2){
+    const y=FLOOR_Y-m*PXM, is10=m===10;
+    el('line',{x1:is10?12:16,y1:y,x2:28,y2:y,stroke:is10?'#FF3355':'#64748B','stroke-width':is10?3:1.5},r);
+    const t=el('text',{x:is10?0:4,y:y+4,'font-family':"'JetBrains Mono',monospace",'font-size':is10?10.5:9,'font-weight':700,fill:is10?'#FF3355':'#64748B'},r);
+    t.textContent=is10?'10★':(m===0?'':m);
+  }
+  const s=$('#shadows');
+  for(let i=0;i<3;i++) el('ellipse',{id:'sh'+i,cx:X[i],cy:FLOOR_Y+2,rx:44,ry:5.5,fill:'#000',opacity:0.4},s);
+  $('#hammers').innerHTML=[0,1,2].map(i=>`
+    <g id="hm${i}" opacity="0">
+      <rect x="-5" y="0" width="10" height="110" rx="4" fill="#334155" stroke="#000" stroke-width="2"/>
+      <rect x="-24" y="96" width="48" height="30" rx="6" fill="#64748B" stroke="#000" stroke-width="2.5"/>
+      <rect x="-24" y="96" width="48" height="8" rx="3" fill="#FF3355"/>
+    </g>
+  `).join('');
+})();
+
+function paintFloor(){
+  const g=$('#floorG'); g.innerHTML=''; const f=FLOORS[st.floor];
+  el('rect',{x:0,y:FLOOR_Y,width:380,height:45,fill:f.c},g);
+  el('line',{x1:0,y1:FLOOR_Y,x2:380,y2:FLOOR_Y,stroke:'#B8FF00','stroke-width':2.5},g);
+}
+
+/* Burst Effects */
+const fx=$('#fx'), fxList=[];
+function addFx(o){o.t=0;fxList.push(o);}
+function fxUpdate(dt){
+  for(let i=fxList.length-1;i>=0;i--){
+    const o=fxList[i];o.t+=dt;const u=o.t/o.life;
+    if(u>=1){o.g.remove();fxList.splice(i,1);}else o.upd(u,dt);
+  }
+}
+function burst(x,y,txt,col){
+  const g=el('g',{},fx),pts=[];
+  for(let k=0;k<14;k++){
+    const r=k%2?24:36,a=k/14*TAU;
+    pts.push(`${(Math.cos(a)*r).toFixed(1)},${(Math.sin(a)*r).toFixed(1)}`);
+  }
+  el('polygon',{points:pts.join(' '),fill:col,stroke:'#000','stroke-width':2.2},g);
+  const t=el('text',{'text-anchor':'middle',y:4,'font-family':"'Space Grotesk',sans-serif",'font-size':10.5,'font-weight':800,fill:'#000'},g);
+  t.textContent=txt;
+  addFx({
+    g,life:0.95,
+    upd(u){
+      g.setAttribute('transform',`translate(${x} ${(y-u*12).toFixed(1)}) scale(${(1.1-u*0.2).toFixed(2)})`);
+      g.setAttribute('opacity',u>0.7?(1-(u-0.7)/0.3).toFixed(2):1);
+    }
+  });
+}
+
+/* Row updater */
+function setRow(i,badge,cls,msg,dmg){
+  const b=$('#b'+i);b.textContent=badge;b.className='badge '+cls;
+  $('#m'+i).textContent=msg;$('#d'+i).style.width=clamp(dmg,0,100)+'%';
+}
+function updateLoad(){
+  $('#lb0').style.width=Math.min(100,G.peakLoad/100*100)+'%';
+  $('#lv0').textContent=Math.round(G.peakLoad);
+  const rl=$('#lb1');rl.style.width=Math.min(100,R.load/100*100)+'%';
+  rl.style.background=R.load>60?'var(--red)':'var(--lime)';
+  $('#lv1').textContent=Math.round(R.load)+(R.load>60?' (over limit)':'');
+}
+
+/* G-Shock Physics */
+const G={K:60,theta:null,omega:0,phiU:0,lastPhi:null,wraps:0,track:false,tt:0,peakLoad:0,maxAbs:0,scuff:false,lastS:0};
+G.impact=function(s,dir){
+  G.omega+=dir*Math.min(30,s*0.28);
+  G.track=true;G.tt=0;G.peakLoad=0;G.maxAbs=0;G.lastS=s;
+  if(s>=75){G.scuff=true;$('#gScuff').setAttribute('opacity',1);}
+  setRow(0,'Wobbling','b-fine','Minute hand magnetically decoupled under shock. Magnet pulling it back...',G.scuff?10:0);
+};
+G.final=function(){
+  const deg=Math.round(G.maxAbs*R2D);
+  let m=deg<2?'Barely flinched.':(G.maxAbs>Math.PI?`Minute hand spun right round, then magnet reeled it back.`:`Minute hand swung ${deg}° off mark, then magnet pulled it home.`);
+  m+=' Time error: none.';
+  if(G.scuff)m+=' Battle scuffs on bumpers. Still 100% fine.';
+  if(G.lastS>100)m+=' Past Casio\'s 10m test! Still ticking happily.';
+  setRow(0,G.scuff?'Scuffed':'Fine',G.scuff?'b-scuff':'b-fine',m,G.scuff?12:0);
+};
+G.reset=function(){
+  G.theta=null;G.omega=0;G.track=false;G.peakLoad=0;G.scuff=false;
+  $('#gScuff').setAttribute('opacity',0);
+};
+function gUpdate(dt){
+  const d=new Date(),sec=d.getSeconds()+d.getMilliseconds()/1000,min=d.getMinutes()+sec/60,hrs=(d.getHours()%12)+min/60;
+  const phi=TAU*min/60;
+  if(G.lastPhi!==null&&phi<G.lastPhi-Math.PI)G.wraps++;
+  G.lastPhi=phi;G.phiU=phi+G.wraps*TAU;
+  if(G.theta===null)G.theta=G.phiU;
+  const c=2*0.28*Math.sqrt(G.K),n=Math.max(1,Math.ceil(dt*240)),h=dt/n;
+  for(let i=0;i<n;i++){G.omega+=(-G.K*Math.sin(G.theta-G.phiU)-c*G.omega)*h;G.theta+=G.omega*h;}
+  const D=G.theta-G.phiU;
+  if(G.track){
+    G.tt+=dt;G.peakLoad=Math.max(G.peakLoad,Math.abs(G.K*Math.sin(D)));G.maxAbs=Math.max(G.maxAbs,Math.abs(D));
+    if((G.tt>0.4&&Math.abs(D)<1*D2R&&Math.abs(G.omega)<0.3)||G.tt>4.5){G.track=false;G.final();}
+    updateLoad();
+  }
+  $('#gMin').setAttribute('transform',`rotate(${(G.theta*R2D).toFixed(2)})`);
+  $('#gHour').setAttribute('transform',`rotate(${(hrs*30).toFixed(2)})`);
+  $('#gInd').setAttribute('transform',`rotate(${(sec*6).toFixed(1)})`);
+  const gh=$('#gGhost');gh.setAttribute('transform',`rotate(${(phi*R2D).toFixed(2)})`);gh.setAttribute('opacity',Math.abs(D)>3*D2R?0.85:0);
+  const days=['SUN','MON','TUE','WED','THU','FRI','SAT'];
+  $('#gDay').textContent=days[d.getDay()];
+  $('#gSec').textContent=String(d.getSeconds()).padStart(2,'0');
+}
+
+/* Rolex Physics */
+const R={minOff:0,hourOff:0,scuff:0,dent:false,stopped:false,crack:false,secFreeze:0,secA:0,load:0};
+R.impact=function(s,dir){
+  R.load=s*2.2;
+  if(s>=14)R.scuff=Math.max(R.scuff,s>=45?2:1);
+  if(s>=26){R.minOff+=dir*(s-26)*0.6*D2R*rnd(0.8,1.2);R.hourOff+=dir*(s-26)*0.2*D2R;}
+  if(s>=36)R.dent=true;
+  if(s>=48&&!R.stopped){R.stopped=true;R.secFreeze=R.secA;}
+  if(s>=68)R.crack=true;
+  R.refresh();updateLoad();
+};
+R.refresh=function(){
+  $('#rDent').setAttribute('opacity',R.dent?1:0);
+  $('#rCrack').setAttribute('opacity',R.crack?1:0);
+  const err=Math.abs(R.minOff*R2D/6);
+  let dmg=0,b='Fine',c='b-fine',msg='Not a scratch. Very dignified.';
+  if(R.scuff){dmg=15;b='Scuffed';c='b-scuff';msg='Steel scuffed, but ticking and on time.';}
+  if(err>=0.3){dmg=35;b='Knocked';c='b-warn';msg=`Hands knocked ${err.toFixed(1)}m off time on pinion.`;}
+  if(R.dent){dmg=50;b='Dented';c='b-warn';msg='Case dented. Hand shaft took the full blow.';}
+  if(R.stopped){dmg=75;b='Stopped';c='b-bad';msg='Balance staff seized. Stopped ticking.';}
+  if(R.crack){dmg=90;b='Broken';c='b-bad';msg='Sapphire crystal cracked. Service centre time!';}
+  setRow(1,b,c,msg,dmg);
+};
+R.reset=function(){
+  R.minOff=0;R.hourOff=0;R.scuff=0;R.dent=false;R.stopped=false;R.crack=false;R.load=0;
+  R.refresh();
+};
+function rUpdate(){
+  const d=new Date(),sec=d.getSeconds()+d.getMilliseconds()/1000,min=d.getMinutes()+sec/60,hrs=(d.getHours()%12)+min/60;
+  R.secA=sec*6;
+  $('#rMin').setAttribute('transform',`rotate(${(min*6+R.minOff*R2D).toFixed(2)})`);
+  $('#rHour').setAttribute('transform',`rotate(${(hrs*30+R.hourOff*R2D).toFixed(2)})`);
+  $('#rSec').setAttribute('transform',`rotate(${(R.stopped?R.secFreeze:R.secA).toFixed(2)})`);
+  $('#rDate').textContent=String(d.getDate());
+}
+
+/* Apple Watch with fun break expressions */
+const A={level:0,acc:0,glitchT:0};
+A.impact=function(s){
+  A.acc+=s;
+  const lv=A.acc>=85?4:A.acc>=50?3:A.acc>=28?2:A.acc>=12?1:0;
+  A.level=lv;
+  A.refresh();
+};
+A.refresh=function(){
+  $('#aNormal').setAttribute('display',A.level===0?'inline':'none');
+  $('#aWorried').setAttribute('display',A.level===1?'inline':'none');
+  $('#aWincing').setAttribute('display',A.level===2?'inline':'none');
+  $('#aDead').setAttribute('display',A.level===3?'inline':'none');
+  $('#aObliterated').setAttribute('display',A.level>=4?'inline':'none');
+  $('#aBlackout').setAttribute('opacity',A.level>=4?0.88:0);
+
+  const msgs=[
+    'Survived. Somehow. The screen is very smug about it.',
+    'Hairline crack right across your notifications (o_o).',
+    'Full spiderweb. Touch screen is now creative (>_<).',
+    'Shattered and glitching (x_x). Siri has left the chat.',
+    'Black mirror mode. Completely dead (X_X). Rest in pieces.'
+  ];
+  const dm=[0,25,55,85,100], bd=['Fine','Alert','Cracked','Dead','Destroyed'], cl=['b-fine','b-warn','b-warn','b-bad','b-bad'];
+  setRow(2,bd[A.level],cl[A.level],msgs[A.level],dm[A.level]);
+};
+A.reset=function(){
+  A.level=0;A.acc=0;
+  $('#aGlitch').innerHTML='';
+  A.refresh();
+};
+function aUpdate(dt){
+  const d=new Date();
+  const t=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
+  $('#aTime').textContent=t;
+  const days=['SUN','MON','TUE','WED','THU','FRI','SAT'];
+  $('#aDate').textContent=days[d.getDay()]+' '+d.getDate();
+
+  if(A.level>=3){
+    A.glitchT-=dt;
+    if(A.glitchT<=0){
+      A.glitchT=0.12;
+      const c=['#FF3355','#00E5FF','#B8FF00','#FFFFFF'];
+      let h='';
+      for(let i=0;i<4;i++){
+        h+=`<rect x="-68" y="${rnd(-86,76).toFixed(0)}" width="136" height="${rnd(2,8).toFixed(0)}" fill="${c[i%c.length]}" opacity="${rnd(0.4,0.9).toFixed(2)}"/>`;
+      }
+      $('#aGlitch').innerHTML=h;
+    }
+  }else{
+    $('#aGlitch').innerHTML='';
+  }
+}
+
+/* Severity & Sync */
+const sev=()=>st.mode==='drop'?(st.h*FLOORS[st.floor].h*10):st.str;
+function ouchWord(s){
+  return s<12?'gentle':s<30?'ouch':s<60?'yikes':s<98?'wow':s<=101?'Casio test height':'past the test';
+}
+function updOuch(){
+  const s=sev();
+  $('#ouchN').textContent=Math.round(s);
+  $('#ouchW').textContent=ouchWord(s);
+  $('#ouchFill').style.width=clamp(s/120*100,0,100)+'%';
+  $('#hOut').textContent=st.h.toFixed(1)+' m';
+  $('#sOut').textContent=st.str;
+  // Flare creature robot eyes based on severity
+  const op=clamp(0.4+s*0.006, 0.4, 1);
+  $('#eyeL').setAttribute('opacity', op);
+  $('#eyeR').setAttribute('opacity', op);
+}
+
+function toReady(){
+  if(st.phase==='running')return;
+  st.phase='ready';
+  st.y=st.mode==='drop'?(REST-st.h*PXM):REST;
+  st.rot=[0,0,0];st.squash=[0,0,0];
+  const isDrop=st.mode==='drop';
+  $('#hgroup').setAttribute('display',isDrop?'inline':'none');
+  const y=FLOOR_Y-st.h*PXM;
+  $('#hline').setAttribute('y1',y);$('#hline').setAttribute('y2',y);
+  const py=clamp(y-24,6,FLOOR_Y-24);
+  $('#hpill').setAttribute('y',py);
+  $('#htag').setAttribute('y',py+15);
+  $('#htag').textContent=st.h.toFixed(1)+'m';
+  updOuch();
+}
+
+function setMode(m){
+  st.mode=m;
+  AudioFX.click();
+  $$('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.mode===m));
+  $('#dropCtl').hidden=m!=='drop';
+  $('#smackCtl').hidden=m!=='smack';
+  const label=m==='drop'?'DROP THEM!':'SMACK THEM!';
+  $('#goTxt').textContent=label;
+  toReady();
+}
+
+window.setSmack=function(v){
+  st.str=v;$('#str').value=v;
+  AudioFX.click();updOuch();
+};
+
+function startRun(){
+  if(st.phase==='running')return;
+  AudioFX.click();
+  if(st.mode==='drop')AudioFX.whoosh();
+  const s=sev();
+  st.run={mode:st.mode,t:0,s,hit:false,ti:0,y0:0,Tf:0};
+  st.tilt=[rnd(-20,20),rnd(-20,20),rnd(-20,20)];
+  st.squash=[0,0,0];
+  if(st.mode==='drop'){
+    st.y=REST-st.h*PXM;st.run.y0=st.y;
+    st.run.Tf=Math.max(0.24,0.78*Math.sqrt(2*st.h/9.81));
+    st.rot=[0,0,0];
+  }else{
+    st.y=REST;st.rot=[0,0,0];
+  }
+  st.phase='running';
+  $('#go').disabled=true;$('#fresh').disabled=true;
+  $('#sayBadge').textContent='FALLING';
+  $('#say').textContent=st.mode==='drop'?'Three, two, one...':'Hammer time...';
+}
+
+function doImpact(s){
+  const dirs=[Math.random()<0.5?-1:1,Math.random()<0.5?-1:1,Math.random()<0.5?-1:1];
+  G.impact(s,dirs[0]);
+  R.impact(s,dirs[1]);
+  A.impact(s);
+
+  AudioFX.impact(s, A.level>=2);
+
+  const q=Math.min(0.12,0.02+s*0.0012);
+  st.squash=[q,q,q];
+  st.shake=Math.min(1.1,0.2+s/70);
+
+  const gt=s<30?'boing!':s<70?'BONK!':'WHAM!';
+  const rt=s<15?'tink':s<40?'CLINK!':'CLANG!';
+  const at=A.level>=3?'SHATTER!':A.level>=1?'CRACK!':'tap';
+
+  burst(X[0],220,gt,'#B8FF00');
+  burst(X[1],220,rt,'#CBD5E1');
+  burst(X[2],220,at,A.level>=1?'#FF3355':'#FFD026');
+
+  st.drops++;
+  $('#sayBadge').textContent='IMPACT';
+  const f=FLOORS[st.floor];
+  const w=st.mode==='drop'?`Dropped from ${st.h.toFixed(1)}m onto ${f.n}`:`Hammer hit with force ${st.str}`;
+  $('#say').textContent=`${w}: ouch score ${Math.round(s)}. ${verdict()}`;
+}
+
+function verdict(){
+  const rBad=R.stopped||R.crack||R.dent, aBad=A.level>=1;
+  if(aBad&&rBad)return 'The G-Shock walked away smiling. The other two are in intensive care.';
+  if(aBad)return 'The Apple Watch screen tapped out. G-Shock and Rolex still ticking.';
+  if(rBad)return 'The Rolex is hurting. G-Shock is still on the exact second.';
+  return 'Everyone survived. Turn up the height!';
+}
+
+function runUpdate(dt){
+  const r=st.run;if(!r)return;
+  r.t+=dt;
+  if(r.mode==='drop'){
+    const f=FLOORS[st.floor];
+    if(r.t<r.Tf){
+      const u=r.t/r.Tf;
+      st.y=r.y0+(REST-r.y0)*u*u;
+      for(let i=0;i<3;i++)st.rot[i]=st.tilt[i]*u;
+    }else{
+      if(!r.hit){r.hit=true;r.ti=r.t;st.y=REST;doImpact(r.s);}
+      const u=(r.t-r.ti)/0.38,b=Math.min(38,st.h*PXM*0.1*f.h+10*f.h);
+      st.y=u<1?REST-4*b*u*(1-u):REST;
+      for(let i=0;i<3;i++)st.rot[i]=st.tilt[i]*(1-clamp(u,0,1));
+      if(r.t>r.ti+0.7)endRun();
+    }
+  }else{
+    const tW=0.42,tS=0.10,tI=tW+tS;
+    for(let i=0;i<3;i++){
+      const sg=i===0?-1:1;let a=0,op=1;
+      if(r.t<tW){const u=r.t/tW;a=sg*70*(1-Math.pow(1-u,2));}
+      else if(r.t<tI){const u=(r.t-tW)/tS;a=sg*70*(1-u*u);}
+      else{const u=clamp((r.t-tI)/0.5,0,1);a=-sg*20*Math.sin(Math.min(1,u*2)*Math.PI/2)*(1-u);op=1-u;}
+      const h=$('#hm'+i);h.setAttribute('transform',`translate(${X[i]} 135) rotate(${a.toFixed(1)})`);h.setAttribute('opacity',op.toFixed(2));
+    }
+    if(r.t>=tI&&!r.hit){r.hit=true;r.ti=r.t;doImpact(r.s);}
+    if(r.t>tI+0.7)endRun();
+  }
+}
+
+function endRun(){
+  st.run=null;st.phase='landed';
+  for(let i=0;i<3;i++)$('#hm'+i).setAttribute('opacity',0);
+  $('#go').disabled=false;$('#fresh').disabled=false;
+}
+
+function resetRows(){
+  setRow(0,'Ready','b-fine','Waiting. G-Shock\'s founding goal was surviving a 10m drop.',0);
+  setRow(1,'Ready','b-fine','Waiting. Nervously polishing its bezel.',0);
+  setRow(2,'Ready','b-fine','Waiting. Already looking uneasy.',0);
+  G.peakLoad=0;R.load=0;updateLoad();
+}
+function freshWatches(){
+  if(st.phase==='running')return;
+  AudioFX.click();
+  G.reset();R.reset();A.reset();
+  resetRows();
+  st.phase='landed';toReady();st.drops=0;
+  $('#sayBadge').textContent='MINT';
+  $('#say').textContent='Three shiny new watches. What could go wrong?';
+}
+
+function render(dt){
+  for(let i=0;i<3;i++){
+    st.squash[i]*=Math.exp(-dt*9);
+    const q=st.squash[i];
+    $('#w'+i).setAttribute('transform',`translate(${X[i]} ${(st.y+q*72).toFixed(1)}) rotate(${st.rot[i].toFixed(1)}) scale(${(1+q).toFixed(3)} ${(1-q).toFixed(3)})`);
+    const hm=Math.max(0,(REST-st.y)/PXM),k=clamp(1-hm/22,0.3,1);
+    const sh=$('#sh'+i);sh.setAttribute('rx',(44*k).toFixed(1));sh.setAttribute('opacity',(0.4*k).toFixed(2));
+  }
+  st.shake*=Math.exp(-dt*7);
+  const a=Math.min(9,st.shake*9);
+  $('#stage').setAttribute('transform',`translate(${(Math.sin(st.t*85)*a).toFixed(1)} ${(Math.cos(st.t*75)*a*0.6).toFixed(1)})`);
+}
+
+let last=performance.now();
+function frame(now){
+  const dt=Math.min(0.05,(now-last)/1000);last=now;st.t+=dt;
+  runUpdate(dt);gUpdate(dt);rUpdate();aUpdate(dt);fxUpdate(dt);render(dt);
+  requestAnimationFrame(frame);
+}
+
+/* Event listeners */
+$$('[data-mode]').forEach(b=>b.onclick=()=>setMode(b.dataset.mode));
+$('#height').oninput=e=>{st.h=+e.target.value;toReady();};
+$('#str').oninput=e=>{st.str=+e.target.value;toReady();};
+$$('#presets [data-h]').forEach(b=>b.onclick=()=>{
+  st.h=+b.dataset.h;$('#height').value=st.h;AudioFX.click();toReady();
+});
+$$('#floors [data-f]').forEach(b=>b.onclick=()=>{
+  st.floor=b.dataset.f;
+  $$('#floors [data-f]').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  AudioFX.click();paintFloor();toReady();
+});
+$$('#cols [data-c]').forEach(b=>b.onclick=()=>{
+  $$('#cols [data-c]').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  AudioFX.click();
+  const c=GCOL[b.dataset.c];
+  for(const k in c)scene.style.setProperty('--g'+k,c[k]);
+});
+
+$('#go').onclick=startRun;
+$('#fresh').onclick=freshWatches;
+
+// Drag to adjust height directly on stage
+let isDrag=false;
+const getH=(e)=>{
+  const rect=scene.getBoundingClientRect();
+  const cy=e.touches?e.touches[0].clientY:e.clientY;
+  const yInSvg=(cy-rect.top)*(440/rect.height);
+  return clamp((FLOOR_Y-yInSvg)/PXM, 0.2, 12);
+};
+scene.addEventListener('pointerdown',e=>{
+  if(st.phase==='running'||st.mode!=='drop')return;
+  isDrag=true;st.h=+getH(e).toFixed(1);
+  $('#height').value=st.h;toReady();
+});
+window.addEventListener('pointermove',e=>{
+  if(!isDrag)return;
+  st.h=+getH(e).toFixed(1);
+  $('#height').value=st.h;toReady();
+});
+window.addEventListener('pointerup',()=>{isDrag=false;});
+
+// Interactive watch clicks
+$('#w2').addEventListener('click',()=>{
+  // Poke Apple Watch
+  AudioFX.click();
+  if(A.level===0){
+    $('#aNormal').setAttribute('display','none');
+    $('#aWorried').setAttribute('display','inline');
+    setTimeout(()=>{$('#aWorried').setAttribute('display','none');$('#aNormal').setAttribute('display','inline');},1800);
+  }
+});
+
+// Init
+paintFloor();
+A.reset();
+resetRows();
+toReady();
+updOuch();
+requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
